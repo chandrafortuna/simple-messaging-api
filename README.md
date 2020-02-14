@@ -4,9 +4,7 @@ API for sending and retrieve message.
 
 ## Getting Started
 
-### Prerequisites
-
-Clone this project
+Cloned copies of this repository must be placed in the correct location in the GOPATH
 
 ```
 git clone git@github.com:chandrafortuna/simple-messaging-api.git
@@ -24,10 +22,10 @@ go build -o messaging-api
 
 The following table shows the HTTP methods and URLs that represent the action supported in the API.
 
-Request | Description | Use case 
---- | --- | --- | --- 
-GET /message | Read all messages | Show a list of messages
-POST /message?text={message} | Send a message | Create new message, takes the text params 
+| Request  | Description |
+| ------------- | ------------- |
+| `GET /message`  | Show a list of messages  |
+| `POST /message?text={message}`  | Create new message, takes the text as parameter  |
 
 Make a POST request to the /message endpoint by navigating http://localhost:8000/message?text=test message
 The result will be a message that has been sent.
@@ -36,9 +34,10 @@ To get all message, navigate to http://localhost:8000/message. the API will retu
 
 ### Run the client
 
-An example client to retrieve message after send at realtime
+An example client to retrieve message after send at realtime. Open in new terminal window:
 
 ```
+cd simple-messaging-api/
 cd client/
 npm install http-server -g
 http-server
