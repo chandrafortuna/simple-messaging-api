@@ -20,10 +20,9 @@ func NewHandler(s m.Service) *Handler {
 }
 
 func (h *Handler) Send(w http.ResponseWriter, r *http.Request) {
-	msg := r.URL.Query().Get("message")
+	msg := r.URL.Query().Get("text")
 	res, err := h.service.Send(msg)
 	if err != nil {
-		// respondErr(w, r, http.StatusInternalServerError, "failed to write message: ", err)
 		ReplyError(&w, http.StatusInternalServerError, "failed to write message: ", err)
 		return
 	}
@@ -37,19 +36,16 @@ func (h *Handler) Send(w http.ResponseWriter, r *http.Request) {
 
 	log.Println(res.Text)
 
-	// respond(w, r, http.StatusCreated, &res)
 	ReplySuccess(&w, &res)
 }
 
 func (h *Handler) GetAll(w http.ResponseWriter, r *http.Request) {
 	res, err := h.service.GetAll()
 	if err != nil {
-		// respondErr(w, r, http.StatusInternalServerError, "failed to get all message: ", err)
 		ReplyError(&w, http.StatusInternalServerError, "failed to get all message: ", err)
 		return
 	}
 
-	// respond(w, r, http.StatusOK, &res)
 	ReplySuccess(&w, res)
 }
 

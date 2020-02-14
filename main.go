@@ -16,8 +16,8 @@ func main() {
 	handler := h.NewHandler(messageService)
 
 	router := mux.NewRouter()
-	router.HandleFunc("/chat", handler.Send).Methods("POST")
-	router.HandleFunc("/chat", handler.GetAll).Methods("GET")
+	router.HandleFunc("/message", handler.Send).Methods("POST")
+	router.HandleFunc("/message", handler.GetAll).Methods("GET")
 	router.HandleFunc("/ws", handler.WebsocketEndpoint)
 	log.Fatal(http.ListenAndServe(":8000", router))
 }

@@ -28,7 +28,6 @@ func (s *Service) Send(msg string) (*Message, error) {
 	}
 
 	return m, nil
-
 }
 
 func (s *Service) GetAll() ([]*Message, error) {
